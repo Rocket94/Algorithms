@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Algorithms/util"
 	"fmt"
 )
 
@@ -41,6 +42,7 @@ func partition(A[]int,low,high int)(q int){
 
 func main() {
 	A:=[]int{66,233,55,1,787,93,12,4,8899,123,43}
-	quickSort(A,0,len(A)-1)
+	quickSort(A,0, len(A)-1)
 	fmt.Println(A)
+	fmt.Println(util.SliceEqual(A,[]int{1,4,12,43,12,66,4,12,43,123,8899}))
 }
