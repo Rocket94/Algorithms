@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 //蛮力法
 func squareMatrixMultiply1(A, B [][]int) (C [][]int) {
@@ -120,28 +118,4 @@ func addTwoMatrix(A, B [][]int, n int) (C [][]int) {
 		}
 	}
 	return C
-}
-
-func main() {
-	//A := [][]int{{1, 2, 3, 4}, {4, 5, 6, 7}, {7, 8, 9, 10}, {10, 11, 12, 13}}
-	//B := [][]int{{1, 2, 3, 4}, {4, 5, 6, 7}, {7, 8, 9, 10}, {10, 11, 12, 13}}
-	P := [][]int{{1, 2, 3}, {4, 5, 6} ,{7,8,9}}
-	//Q := [][]int{{1, 2, 3}, {4, 5, 6} ,{7,8,9}}
-	p1 := divideMatrix(P, 1, 1)
-	p2 := divideMatrix(P, 1, 2)
-	p3 := divideMatrix(P, 2, 1)
-	p4 := divideMatrix(P, 2, 2)
-	//C1 := squareMatrixMultiply1(A,B)
-	//C2 := squareMatrixMultiply2(A,B,4)
-	//C3 := squareMatrixMultiply1(P,Q)
-	//C4 := squareMatrixMultiply2(P,Q,4)
-
-	//fmt.Println(C1)
-	//fmt.Println(C2)
-	//fmt.Println(C3)
-	fmt.Println(p1)
-	fmt.Println(p2)
-	fmt.Println(p3)
-	fmt.Println(p4)
-
 }

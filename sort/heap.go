@@ -1,4 +1,4 @@
-package main
+package sort
 
 import "fmt"
 
@@ -39,10 +39,4 @@ func heapSort(A[]int){
 		maxHeapify(A,0,i)//重新调整堆使其变成最大堆
 		fmt.Println(A)
 	}
-}
-
-func main(){
-	A:=[]int{9,10,7,15,16,11,14}
-	heapSort(A)
-	fmt.Println(A)
 }

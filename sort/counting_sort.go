@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func countingSort(A[]int,k int)[]int{
 	B:=make([]int,len(A))
@@ -16,9 +14,4 @@ func countingSort(A[]int,k int)[]int{
 		C[A[i]]-=1
 	}
 	return B
-}
-func main()  {
-	A:=[]int{5,6,6,3,2,2,1,8,0,0}
-	B:=countingSort(A,9)
-	fmt.Println(B)
 }

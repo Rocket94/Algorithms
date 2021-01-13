@@ -1,4 +1,4 @@
-package main
+package sort
 
 type TreeNode struct {
 	key interface{}

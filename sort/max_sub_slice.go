@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 //假定子数组必然包含中点的情况，找出左右索引和子数组之和
 func findMaxCrossingSub(arr []int, low, mid, high int) (maxLeft, maxRight, result int) {
@@ -42,10 +40,4 @@ func findMaxSub(arr []int, low, high int) (rLow, rHigh, result int) {
 	} else {
 		return crossLow,crossHigh,crossResult
 	}
-}
-func main() {
-	arr := []int{13, -3, -25, 20, -3, -16, -23, 18, -20, -7, 12, -5, -22, 15, -4, 7}
-	l, r, n := findMaxSub(arr, 0, 15)
-	fmt.Printf("左侧的索引是：%d  右侧的索引是：%d  子切片之和：%d", l, r, n)
-
 }

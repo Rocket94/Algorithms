@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func random(A[]int,low,high int)int{
 	temp:=A[low]
@@ -35,13 +33,5 @@ func randomSelect(A[]int,p,q,i int)int{
 		return randomSelect(A,ran+1,q,i-(ran-p+1))
 	}else {
 		return randomSelect(A,p,ran-1,i)
-	}
-}
-
-func main(){
-	A:=[]int{5,4,2,6,8,1}
-	for i:=1;i<=len(A);i++ {
-		b:=randomSelect(A,0,5,i)
-		fmt.Println(b)
 	}
 }

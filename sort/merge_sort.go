@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 //合并两个数组，索引分别为p~q,q+1~r
 func merge(arr []int, p, q, r int) {
@@ -44,11 +42,4 @@ func mergeSort(arr []int, p, r int) {
 		mergeSort(arr, q+1, r) //后一段继续分
 		merge(arr, p, q, r)     //比较两段，按顺序合并成一段
 	}
-}
-
-func main() {
-	//a:=[]int{1,2}
-	b := []int{32, 56, 111, 33, 6, 77, 11, 23, 56, 2}
-	mergeSort(b, 0, 9)
-	fmt.Println("b的值为:", b)
 }

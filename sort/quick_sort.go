@@ -1,9 +1,4 @@
-package main
-
-import (
-	"Algorithms/util"
-	"fmt"
-)
+package sort
 
 func quickSort(A []int, low, high int) {
 	//终止条件，左右索引相等，只有一个数时截止
@@ -38,11 +33,4 @@ func partition(A[]int,low,high int)(q int){
 	}
 	A[low]=temp//最后一个坑由基准来填，大小就由此分界
 	return low//返回分界线
-}
-
-func main() {
-	A:=[]int{66,233,55,1,787,93,12,4,8899,123,43}
-	quickSort(A,0, len(A)-1)
-	fmt.Println(A)
-	fmt.Println(util.SliceEqual(A,[]int{1,4,12,43,12,66,4,12,43,123,8899}))
 }
