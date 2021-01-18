@@ -79,35 +79,36 @@ func (t *BinaryTree) Insert(data int) {
 		y.Right = n
 	}
 }
-
-func (t *BinaryTree) Replace(src, dest *TreeNode) {
-	if dest.Parent == nil {
-		t.Root = src
-	} else if dest == dest.Parent.Left {
-		dest.Parent.Left = src
+//replace u with v
+func (t *BinaryTree) Replace(u, v *TreeNode) {
+	if u.Parent == nil {
+		t.Root = v
+	} else if u == u.Parent.Left {
+		u.Parent.Left = v
 	} else {
-		dest.Parent.Right = src
+		u.Parent.Right = v
 	}
-	src.Parent = dest.Parent
+	v.Parent = u.Parent
 }
-func (t *BinaryTree) Delete(n *TreeNode) {
-	if n.Left == nil {
-		t.Replace(n.Right,n)
-	}else if n.Right==nil{
-		t.Replace(n.Left,n)
+func (t *BinaryTree) Delete(z *TreeNode) {
+	if z.Left == nil {
+		t.Replace(z,z.Right)
+	}else if z.Right==nil{
+		t.Replace(z,z.Left)
 	}else {
-		//找到n右子树上最小的值
-		y:=n.Right.Minimum()
-		if y!=n.Right{
-			//如果最小值不是n的子节点，则需要和n的右子节点换一下，保证n的右子节点左侧没有挂在
+		//找到z右子树上最小的值
+		y:=z.Right.Minimum()
+		if y.Parent!=z{
+			//如果最小值不是z的子节点，则需要和z的右子节点换一下，保证z的右子节点左侧没有挂载
 			//，因为要让n的左侧挂在到n的右子节点上去
-			t.Replace(y,n.Right)
-			n.Right.Parent=y
+			t.Replace(y,y.Right)
+			y.Right=z.Right
+			y.Right.Parent=y
 		}
-		t.Replace(y,n)
+		t.Replace(z,y)
 		//将n的左子树挂在到y上
-		y.Left=n.Left
-		n.Left.Parent=y
+		y.Left=z.Left
+		z.Left.Parent=y
 	}
 }
 
