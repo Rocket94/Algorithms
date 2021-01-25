@@ -152,7 +152,7 @@ func(T *RedBlackTree)Transplant(u,v *RedBlackTreeNode){
 	}
 	v.Parent=u.Parent
 }
-
+//区别在于用x记录了补位节点。y是
 func(T *RedBlackTree)Delete(z *RedBlackTreeNode){
 	y:=z
 	y_original_color:=y.color
