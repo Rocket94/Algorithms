@@ -57,3 +57,9 @@ func BenchmarkCutRodBottomToTop(b *testing.B) {
 	}
 	b.StopTimer()
 }
+
+func TestLCSLength(t *testing.T) {
+	if LCSLength([]string{"a","b","c","b","d","a","b"},[]string{"b","d","c","a","b","a"})!=4{
+		t.Error("error!")
+	}
+}
