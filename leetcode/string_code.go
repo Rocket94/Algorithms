@@ -39,3 +39,20 @@ func Convert(s string, numRows int) string {
 	}
 	return string(data)
 }
+
+//func LengthOfLongestSubstring(s string) int {
+//	var data =[]byte(s)
+//	var maxLength int
+//	var rk =1
+//	m:=make(map[byte]int)
+//	for i:=0;i< len(data);i++{
+//		if i!=0{
+//			delete(m,s[i-1])
+//		}
+//		for _,ok:=m[data[rk]];rk<len(data)&&ok{
+//
+//		}
+//		if
+//	}
+//	return maxLength
+//}

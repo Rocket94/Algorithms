@@ -66,3 +66,40 @@ func isPalindrome(x int) bool {
 	}
 	return true
 }
+
+func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	var numsall=make([]int,len(nums1)+len(nums2))
+	var i,j,k int
+	for k< len(numsall)/2+1{
+		if i>=len(nums1){
+			for j<len(nums2){
+				numsall[k]=nums2[j]
+				k++
+				j++
+			}
+			break
+		}
+		if j>=len(nums2){
+			for i<len(nums1){
+				numsall[k]=nums1[i]
+				k++
+				i++
+			}
+			break
+		}
+		if nums1[i]<nums2[j]{
+			numsall[k]=nums1[i]
+			i++
+			k++
+		}else{
+			numsall[k]=nums2[j]
+			j++
+			k++
+		}
+	}
+	if len(numsall)%2==0{
+		return float64(numsall[len(numsall)/2]+numsall[len(numsall)/2-1])/2
+	}else{
+		return float64(numsall[len(numsall)/2])
+	}
+}
