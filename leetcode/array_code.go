@@ -31,3 +31,38 @@ func TwoSum(nums []int, target int) []int {
 	}
 	return result
 }
+
+func removeDuplicates(nums []int) int {
+	if len(nums)==0{
+		return 0
+	}
+	p:=1
+	for i:=1;i< len(nums);i++{
+		for j:=i-1;j>=0;j--{
+			if nums[j]==nums[i]{
+				break
+			}
+			if j==0{
+				nums[p]=nums[i]
+				p++
+			}
+		}
+	}
+	return p
+}
+
+func isPalindrome(x int) bool {
+	if x<0{
+		return false
+	}
+	y:=0
+	temp:=x
+	for temp!=0{
+		y=y*10+temp%10
+		temp=temp/10
+	}
+	if y!=x{
+		return false
+	}
+	return true
+}
