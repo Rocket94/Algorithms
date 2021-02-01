@@ -3,7 +3,8 @@ package leetcode
 //func lengthOfLongestSubstring(s string) int {
 //
 //}
-//移动括号法，双index法
+//寻找最大连续无重复子字符串，移动括号法，双index法：移动后面的index先，如果遇见重复的就移前面的，知道没重复了，
+//注意右边索引要-1以给最后一个留个查看的位置
 func LengthOfLongestSubstring(s string) int {
 	var maxLength int
 	var rk = -1
