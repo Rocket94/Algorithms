@@ -18,7 +18,8 @@ func (l *ListNode) String() string {
 	}
 	return fmt.Sprintf("%v", arr)
 }
-
+//两数字相加，每个数字是list存储的逆序数（head是个位数）：思路，进位，
+//注意list 的结构体指针需要取其指针才能修改list结构体的指针
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var lr, lh *ListNode
 	var carry int
