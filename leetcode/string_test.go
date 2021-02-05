@@ -2,9 +2,9 @@ package leetcode
 
 import "testing"
 
-func TestConvert(t *testing.T) {
-	if Convert("PAYPALISHIRING",3)!="PAHNAPLSIIGYIR"{
-		t.Error("error:",Convert("PAYPALISHIRING",3))
+func TestLengthOfLongestSubstring(t *testing.T) {
+	if LengthOfLongestSubstring("abcabcbb")!=3{
+		t.Error("error",LengthOfLongestSubstring("\"abcabcbb\""))
 	}
 }
 
@@ -13,3 +13,9 @@ func TestConvert(t *testing.T) {
 //		t.Error("errors")
 //	}
 //}
+
+func TestLongestPalindrome(t *testing.T) {
+	if LongestPalindrome("abbac")!="abba"{
+		t.Error("errors")
+	}
+}

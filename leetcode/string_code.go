@@ -3,56 +3,62 @@ package leetcode
 //func lengthOfLongestSubstring(s string) int {
 //
 //}
-
-func Convert(s string, numRows int) string {
-	if numRows==1{
+//移动括号法，双index法
+func LengthOfLongestSubstring(s string) int {
+	var maxLength int
+	var rk = -1
+	m := make(map[byte]int)
+	for i := 0; i < len(s); i++ {
+		if i != 0 {
+			delete(m, s[i-1])
+		}
+		for rk+1 < len(s) {
+			if _, ok := m[s[rk+1]]; ok {
+				break
+			} else {
+				rk++
+				m[s[rk]]++
+			}
+		}
+		if rk-i+1 > maxLength {
+			maxLength = rk - i + 1
+		}
+	}
+	return maxLength
+}
+//动态规划求最长回文子串
+func LongestPalindrome(s string) string {
+	begin:=0
+	end:=0
+	if len(s)<2{
 		return s
 	}
-	var data []byte=[]byte(s)
-	var strArr [][]byte=make([][]byte,numRows)
-	for i:=0;i<numRows;i++{
-		strArr[i]=make([]byte, len(s))
+
+	arr:=make([][]bool, len(s))
+	for i:=0;i<len(s);i++{
+		arr[i]=make([]bool,len(s))
+		arr[i][i]=true
 	}
-	var cnt int
-	var col int
-	strArr[0][0]=data[0]
-	cnt++
-	for cnt< len(data){
-		for i:=1;i<numRows&&cnt<len(data);i++{
-			strArr[i][col]=data[cnt]
-			cnt++
-		}
-		for j:=numRows-2;j>=0&&cnt<len(data);j--{
-			col++
-			strArr[j][col]=data[cnt]
-			cnt++
-		}
-	}
-	var cnt2 int
-	for i:=0;i<len(strArr);i++{
-		for j:=0;j<len(strArr[0]);j++{
-			if	strArr[i][j]!=0{
-				data[cnt2]=strArr[i][j]
-				cnt2++
+
+	for j:=1;j<len(s);j++{
+		for i:=0;i<j;i++{
+			if s[i]!=s[j]{
+				arr[i][j]=false
+			}else {
+				if j-i<3{
+					arr[i][j]=true
+				}else {
+					arr[i][j]=arr[i+1][j-1]
+
+				}
+			}
+			if arr[i][j]&&j-i>end-begin{
+				begin=i
+				end=j
 			}
 		}
 	}
-	return string(data)
+
+	return s[begin:end+1]
 }
 
-//func LengthOfLongestSubstring(s string) int {
-//	var data =[]byte(s)
-//	var maxLength int
-//	var rk =1
-//	m:=make(map[byte]int)
-//	for i:=0;i< len(data);i++{
-//		if i!=0{
-//			delete(m,s[i-1])
-//		}
-//		for _,ok:=m[data[rk]];rk<len(data)&&ok{
-//
-//		}
-//		if
-//	}
-//	return maxLength
-//}

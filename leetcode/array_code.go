@@ -67,6 +67,7 @@ func isPalindrome(x int) bool {
 	return true
 }
 
+//找两个数组的中位数，用切片就行。
 func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	var numsall=make([]int,len(nums1)+len(nums2))
 	var i,j,k int
