@@ -1,6 +1,9 @@
 package leetcode
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestLengthOfLongestSubstring(t *testing.T) {
 	if LengthOfLongestSubstring("abcabcbb")!=3{
@@ -18,4 +21,8 @@ func TestLongestPalindrome(t *testing.T) {
 	if LongestPalindrome("abbac")!="abba"{
 		t.Error("errors")
 	}
+}
+
+func TestLetterCombinations(t *testing.T) {
+	fmt.Println(LetterCombinations("23"))
 }
