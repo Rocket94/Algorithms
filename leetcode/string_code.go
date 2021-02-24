@@ -1,7 +1,5 @@
 package leetcode
 
-import "strconv"
-
 //func lengthOfLongestSubstring(s string) int {
 //
 //}
@@ -66,34 +64,73 @@ func LongestPalindrome(s string) string {
 	return s[begin : end+1]
 }
 
-var res []string
+//回溯法求所有手机字母组合
+var (
+	phoneMap = map[string]string{
+		"2": "abc",
+		"3": "def",
+		"4": "ghi",
+		"5": "jkl",
+		"6": "mno",
+		"7": "pqrs",
+		"8": "tuv",
+		"9": "wxyz",
+	}
+	res []string
+)
 
 func LetterCombinations(digits string) []string {
-	res = make([]string, 0)
-
-	m := make(map[int64][]string)
-	m[2] = []string{"a", "b", "c"}
-	m[3] = []string{"d", "e", "f"}
-	m[4] = []string{"g", "h", "i"}
-	m[5] = []string{"j", "k", "l"}
-	m[6] = []string{"m", "n", "o"}
-	m[7] = []string{"p", "q", "r", "s"}
-	m[8] = []string{"t", "u", "v"}
-	m[9] = []string{"w", "x", "y", "z"}
-
-	divde(digits,"",0,m)
+	if len(digits) == 0 {
+		return []string{}
+	}
+	var builder = ""
+	res = []string{}
+	backtrack(digits, builder, 0)
 
 	return res
 }
 
-func divde(digits, builder string, i int, numpad map[int64][]string)string {
-	if i == len(digits) {
-		res=append(res, builder)
-		return builder
+func backtrack(digits, builder string, index int) {
+	if index == len(digits) {
+		res = append(res, builder)
+	} else {
+		letter := phoneMap[string(digits[index])]
+		index++
+		for i := 0; i < len(letter); i++ {
+			//回溯，下层结果回来需要换一个本层的可能
+			//23
+			//⬆
+			//a		b		c
+			//
+			//23
+			// ⬆
+			//def	def		def
+			builder += string(letter[i])
+			backtrack(digits, builder, index)
+			builder = builder[0 : len(builder)-1]
+		}
 	}
-	value,_:=strconv.ParseInt(digits[i:i+1],10,64)
-	for j := 0; j < len(numpad[value]); j++ {
-		builder = builder + numpad[value][j]
-		return divde(digits, builder, i+1, numpad)
+}
+
+//最长公共前缀
+func LongestCommonPrefix(strs []string) string {
+	var res string
+	if len(strs) == 0 {
+		return res
 	}
+	if len(strs) == 1 {
+		return strs[0]
+	}
+
+OuterLoop:
+	for i := 0; i < len(strs[0]); i++ {
+		for j := 1; j < len(strs); j++ {
+			if len(strs[j])-1 < i || strs[0][0:i+1] != strs[j][0:i+1] {
+				break OuterLoop
+			}
+		}
+		res += string(strs[0][i])
+	}
+
+	return res
 }

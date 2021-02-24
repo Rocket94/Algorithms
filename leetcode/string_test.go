@@ -24,5 +24,9 @@ func TestLongestPalindrome(t *testing.T) {
 }
 
 func TestLetterCombinations(t *testing.T) {
-	fmt.Println(LetterCombinations("23"))
+	fmt.Println(LetterCombinations("2"))
+}
+
+func TestLongestCommonPrefix(t *testing.T) {
+	fmt.Println(LongestCommonPrefix([]string{"flower","flow","flight"}))
 }

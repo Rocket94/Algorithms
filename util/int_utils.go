@@ -1,4 +1,12 @@
 package util
 
-const INT32_MAX =int32(^uint32(0)>>1)
-const INT32_MIN =^INT32_MAX
+const INT_MAX =int(^uint32(0)>>1)
+const INT_MIN =^INT_MAX
+
+func CompareMax(a,b int)int{
+	if a<b{
+		return b
+	}else {
+		return a
+	}
+}
