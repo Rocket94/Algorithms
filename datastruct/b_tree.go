@@ -1,0 +1,6 @@
+package datastruct
+
+func CreateBTree(){
+	
+}
+
