@@ -13,7 +13,7 @@ type ListNode struct {
 func (l *ListNode) String() string {
 	var arr []interface{}
 	for l != nil {
-		arr = append(arr, strconv.FormatInt(int64(l.Val), 10))
+		arr = append(arr, strconv.FormatInt(int64((*l).Val), 10))
 		l = l.Next
 	}
 	return fmt.Sprintf("%v", arr)
@@ -70,4 +70,98 @@ func addTwoNode(n1 **ListNode, n2 **ListNode, car int) (*ListNode, int) {
 		carry = (car) / 10
 	}
 	return lr, carry
+}
+//另一种思路，先对齐，再相加
+func addTwoNumbers2(l1 *ListNode, l2 *ListNode) *ListNode {
+	if l1==nil{
+		return l2
+	}
+	if l2==nil{
+		return l1
+	}
+	l1temp,l2temp:=l1,l2
+	for l1temp.Next!=nil||l2temp.Next!=nil {
+		if l1temp.Next==nil{
+			l1temp.Next=new(ListNode)
+			l1temp.Next.Val=0
+		}
+		if l2temp.Next==nil{
+			l2temp.Next=new(ListNode)
+			l2temp.Next.Val=0
+		}
+		l1temp=l1temp.Next
+		l2temp=l2temp.Next
+	}
+
+	carry:=0
+	lr:=new(ListNode)
+	head:=lr
+	for {
+		lr.Val=(carry+l1.Val+l2.Val)%10
+		carry=(carry+l1.Val+l2.Val)/10
+		if l1.Next==nil||l2.Next==nil{
+			break
+		}
+		lr.Next=new(ListNode)
+		lr=lr.Next
+		l1=l1.Next
+		l2=l2.Next
+	}
+	if carry!=0{
+		lr.Next=&ListNode{
+			Val:  carry,
+			Next: nil,
+		}
+	}
+	return head
+}
+
+//反转链表，一个一个往前面添加
+func reverseList(head *ListNode) *ListNode {
+	if head==nil{
+		return nil
+	}
+	lr:=&ListNode{
+		Val:  head.Val,
+		Next: nil,
+	}
+	for head.Next!=nil{
+		temp:=&ListNode{
+			Val:  head.Next.Val,
+			Next: lr,
+		}
+		head=head.Next
+		lr=temp
+	}
+	return lr
+}
+
+//检测链表里是否有环，两个速度不一样的遍历，看最终是否能重合
+func hasCycle(head *ListNode) bool {
+	if head==nil{
+		return false
+	}
+	ln:=head
+	for ln.Next!=nil&&ln.Next.Next!=nil{
+		ln=ln.Next.Next
+		head=head.Next
+		if ln==head{
+			return true
+		}
+	}
+	return false
+}
+//合并两个升序链表
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+	if l1==nil{
+		return l2
+	}
+	if l2==nil{
+		return l1
+	}
+	for l1!=nil&&l2!=nil{
+		if l1!=nil{
+			
+		}
+	}
 }

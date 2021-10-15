@@ -27,3 +27,15 @@ func TestRemoveDuplicates(t *testing.T){
 	}
 }
 
+func TestThreeSum(t *testing.T) {
+	nums:=[]int{0,0,0,0}
+	res:=ThreeSum(nums)
+	exp:=[][]int{{-1,-1,2},{-1,0,1}}
+	for i,v:=range exp{
+		for j:=0;j<3;j++{
+			if v[j]!=exp[i][j]{
+				t.Errorf("expect=%v,but res=%v",exp,res)
+			}
+		}
+	}
+}

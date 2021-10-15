@@ -1,6 +1,6 @@
 package sort
 
-func countingSort(A[]int,k int)[]int{
+func CountingSort(A[]int,k int)[]int{
 	B:=make([]int,len(A))
 	C:=make([]int,k)
 	for i:=0;i<len(A);i++{
