@@ -45,3 +45,6 @@ func (s *Stack)Pop()(interface{},bool)  {
 	return n.Data,true
 }
 
+
+
+

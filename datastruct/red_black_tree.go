@@ -151,35 +151,35 @@ func (T *RedBlackTree) Transplant(u, v *RedBlackTreeNode) {
 	v.Parent = u.Parent
 }
 
-func (T *RedBlackTree) Delete(z *RedBlackTreeNode) {
-	y := z
-	y_original_color := y.color
-	if z.Left == T.nil {
-		x := z.Right
-		T.Transplant(z, z.Right)
-	} else if z.Right == T.nil {
-		x := z.Left
-		T.Transplant(z, z.Left)
-	} else {
-		y = T.Minimum(z.Right)
-		y_original_color = y.color
-		x := y.Right
-		if y == z.Right {
-			x.Parent = y
-		} else {
-			T.Transplant(y, y.Right)
-			y.Right = z.Right
-			y.Right.Parent = y
-		}
-		T.Transplant(z, y)
-		y.Left = z.Left
-		y.Left.Parent = y
-		y.color = z.color
-		if y_original_color == black {
-			T.DeleteFixup(x)
-		}
-	}
-}
+//func (T *RedBlackTree) Delete(z *RedBlackTreeNode) {
+//	y := z
+//	y_original_color := y.color
+//	if z.Left == T.nil {
+//		x := z.Right
+//		T.Transplant(z, z.Right)
+//	} else if z.Right == T.nil {
+//		x := z.Left
+//		T.Transplant(z, z.Left)
+//	} else {
+//		y = T.Minimum(z.Right)
+//		y_original_color = y.color
+//		x := y.Right
+//		if y == z.Right {
+//			x.Parent = y
+//		} else {
+//			T.Transplant(y, y.Right)
+//			y.Right = z.Right
+//			y.Right.Parent = y
+//		}
+//		T.Transplant(z, y)
+//		y.Left = z.Left
+//		y.Left.Parent = y
+//		y.color = z.color
+//		if y_original_color == black {
+//			T.DeleteFixup(x)
+//		}
+//	}
+//}
 
 func (T *RedBlackTree) Minimum(n *RedBlackTreeNode) *RedBlackTreeNode {
 	x := n
