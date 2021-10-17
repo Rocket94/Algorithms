@@ -34,6 +34,14 @@ func TestQuickSort(t *testing.T) {
 	createTestQuickSort(t,[]int{},[]int{})
 }
 
+func TestCountingSort(t *testing.T) {
+	createTestCountingSort(t,[]int{3,2,1},[]int{1,2,3})
+	createTestCountingSort(t,[]int{3,2,1,2},[]int{1,2,2,3})
+	createTestCountingSort(t,[]int{3,1111,9,5,6,4,2,1,2},[]int{1,2,2,3,4,5,6,9,1111})
+	createTestCountingSort(t,nil,nil)
+	createTestCountingSort(t,[]int{},[]int{})
+}
+
 func createTestBubblingSort(t *testing.T,a,b []int){
 	BubblingSort(a)
 	if !reflect.DeepEqual(a,b){
@@ -54,6 +62,12 @@ func createTestSelectionSort(t *testing.T,a,b []int){
 }
 func createTestQuickSort(t *testing.T,a,b []int){
 	quickSort(a,0,len(a)-1)
+	if !reflect.DeepEqual(a,b){
+		t.Errorf("the sorted array is %v, but the expected is %v",a,b)
+	}
+}
+func createTestCountingSort(t *testing.T,a,b []int){
+	CountingSort(a)
 	if !reflect.DeepEqual(a,b){
 		t.Errorf("the sorted array is %v, but the expected is %v",a,b)
 	}
