@@ -39,3 +39,9 @@ func TestThreeSum(t *testing.T) {
 		}
 	}
 }
+
+func TestPrintPermutations(t *testing.T) {
+	sum:=new(int)
+	PrintPermutations([]int{1,2,3,4},4,sum)
+	fmt.Println("一共有",*sum,"种排列方式")
+}

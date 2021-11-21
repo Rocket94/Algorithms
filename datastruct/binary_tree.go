@@ -52,7 +52,7 @@ func (t *TreeNode) Serch(data int) *TreeNode {
 		return t.Left.Serch(data)
 	}
 }
-
+//插入节点是叶子节点
 func (t *BinaryTree) Insert(data int) {
 	n := &TreeNode{
 		Data: data,
@@ -62,6 +62,7 @@ func (t *BinaryTree) Insert(data int) {
 		return
 	}
 	x := t.Root
+	//y用来存储插入节点的父节点信息
 	var y *TreeNode
 	for x != nil {
 		y = x
@@ -91,6 +92,7 @@ func (t *BinaryTree) Replace(u, v *TreeNode) {
 	v.Parent = u.Parent
 }
 func (t *BinaryTree) Delete(z *TreeNode) {
+	//如果子树里面有一个为空或者都为空，直接把子树提上来
 	if z.Left == nil {
 		t.Replace(z,z.Right)
 	}else if z.Right==nil{
@@ -99,14 +101,14 @@ func (t *BinaryTree) Delete(z *TreeNode) {
 		//找到z右子树上最小的值
 		y:=z.Right.Minimum()
 		if y.Parent!=z{
-			//如果最小值不是z的子节点，则需要和z的右子节点换一下，保证z的右子节点左侧没有挂载
-			//，因为要让n的左侧挂在到n的右子节点上去
+			//需要形成一个最小值y左边无子树，右边是z的右边子树的情况
+			//y的右边就直接换到y上，因为y要上去
 			t.Replace(y,y.Right)
 			y.Right=z.Right
 			y.Right.Parent=y
 		}
 		t.Replace(z,y)
-		//将n的左子树挂在到y上
+		//将n的左子树挂在到y上，这个按理说应该在replace方法里面实现
 		y.Left=z.Left
 		z.Left.Parent=y
 	}

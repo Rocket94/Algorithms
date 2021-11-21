@@ -23,17 +23,21 @@ func (q *Queue) Enqueue(Data interface{}) {
 	}
 }
 
-func (q *Queue) Dequeue()(interface{},bool) {
+func (q *Queue) Dequeue()(interface{}) {
 	if q.Head==nil{
-		return nil,false
+		return nil
 	}
 	d:=q.Head.Data
 	q.Head=q.Head.Next
 	if q.Head==nil{
 		q.Tail=nil
 	}
-	return d,true
+	return d
 
+}
+
+func (q *Queue) IsEmpty()bool{
+	return q.Head==nil
 }
 
 func (q Queue) String() string    {

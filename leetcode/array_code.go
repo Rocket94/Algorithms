@@ -1,6 +1,9 @@
 package leetcode
 
-import "Algorithms/sort"
+import (
+	"Algorithms/sort"
+	"fmt"
+)
 
 //二进制转10进制，能否被5整除，只需要看个位就行，因此每次运算只用个位
 func PrefixesDivBy5(A []int) []bool {
@@ -138,6 +141,7 @@ func max(a, b int) int {
 		return b
 	}
 }
+
 //三数之和等于0，不得重复，难点去重
 func ThreeSum(nums []int) [][]int {
 	//排序
@@ -149,7 +153,7 @@ func ThreeSum(nums []int) [][]int {
 			break
 		}
 		//去重
-		if i> 0 && nums[i] == nums[i-1] {
+		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
 		//双指针
@@ -177,4 +181,25 @@ func ThreeSum(nums []int) [][]int {
 		}
 	}
 	return res
+}
+
+//全排列，回溯法
+//根据递归树估算，时间复杂度在O(n*n!)和O(n!)之间
+func PrintPermutations(array []int, k int,sum *int) {
+	if k == 1 {
+		fmt.Print("[")
+		for i, num := range array {
+			fmt.Print(num,)
+			if i!=len(array)-1{
+				fmt.Print(",")
+			}
+		}
+		fmt.Println("]")
+		*sum++
+	}
+	for i := 0; i < k; i++ {
+		array[i], array[k-1] = array[k-1], array[i]
+		PrintPermutations(array, k-1,sum)
+		array[i], array[k-1] = array[k-1], array[i]
+	}
 }

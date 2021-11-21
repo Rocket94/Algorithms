@@ -42,21 +42,21 @@ func BenchmarkCutRod(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkCutRodTopToBottom(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		CutRodTopToBottom([]int{1,5,8,9,10,17,17,20,24,30},10)
-	}
-	b.StopTimer()
-}
-
-func BenchmarkCutRodBottomToTop(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		CutRodBottomToTop([]int{1,5,8,9,10,17,17,20,24,30},10)
-	}
-	b.StopTimer()
-}
+//func BenchmarkCutRodTopToBottom(b *testing.B) {
+//	b.ResetTimer()
+//	for i := 0; i < b.N; i++ {
+//		CutRodTopToBottom([]int{1,5,8,9,10,17,17,20,24,30},10)
+//	}
+//	b.StopTimer()
+//}
+//
+//func BenchmarkCutRodBottomToTop(b *testing.B) {
+//	b.ResetTimer()
+//	for i := 0; i < b.N; i++ {
+//		CutRodBottomToTop([]int{1,5,8,9,10,17,17,20,24,30},10)
+//	}
+//	b.StopTimer()
+//}
 
 func TestLCSLength(t *testing.T) {
 	if LCSLength([]string{"a","b","c","b","d","a","b"},[]string{"b","d","c","a","b","a"})!=4{
